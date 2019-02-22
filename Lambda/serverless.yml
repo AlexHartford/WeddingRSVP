@@ -1,0 +1,26 @@
+# serverless.yml
+
+service: weddingRSVP
+
+provider:
+  name: aws
+  apiKeys:
+    - primary
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-2
+
+functions:
+  app:
+    handler: app.server # reference the file and exported method
+    events: # events trigger lambda functions
+      - http: # this is an API Gateway HTTP event trigger
+          path: /
+          method: ANY
+          cors: true
+          private: true
+      - http: # all routes get proxied to the Express router
+          path: /{proxy+}
+          method: ANY
+          cors: true
+          private: true
