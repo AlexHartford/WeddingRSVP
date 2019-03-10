@@ -5,11 +5,13 @@ const sls = require('serverless-http');
 const card = require('./routes/card.route');
 
 const express = require('express');
-const app = express()
+const cors = require('cors');
+const app = express();
+app.use(cors());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-let dev_db_url = '';
+let dev_db_url = 'mongodb://admin:captain123@ds249035.mlab.com:49035/wedding-rsvp';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
