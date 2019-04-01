@@ -17,7 +17,7 @@ class RSVP extends Component {
     this.state = {
       code: '',
       guests: [''],
-      error: null,
+      error: false,
       attending: 'NotAttending',
       buttonText: 'Submit',
       email: ''
@@ -34,25 +34,6 @@ class RSVP extends Component {
 
   handleSubmit = () => {
     this.addCard()
-    // var fullUrl =
-    //   'https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards' +
-    //   this.state.code
-    // let req = Request('Get', fullUrl)
-    //   .send()
-    //   .withCredentials()
-    //   .set('Content-Type', 'application/json')
-    //   .set('Access-Control-Allow-Origin', 'http://localhost:3000')
-    //   .set('Access-Control-Allow-Credentials', true)
-    //   .set(
-    //     'Access-Control-Allow-Headers',
-    //     'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent, Origin'
-    //   )
-
-    //   .then(response => {
-    //     console.log(response)
-    //     this.setState(response)
-    //   })
-    //   .catch(error => this.setState(error))
   }
 
   addGuest = () => {
@@ -74,8 +55,9 @@ class RSVP extends Component {
 
   addCard = () => {
     var fullUrl =
-      'https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/create'
-    let req = Request('Post', fullUrl)
+      'https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/update/' +
+      this.state.code
+    let req = Request('Put', fullUrl)
       .send({
         code: this.state.code,
         names: this.state.attending === 'Attending' ? this.state.guests : [],
@@ -95,9 +77,12 @@ class RSVP extends Component {
       )
 
       .then(res => {
-        this.setState({ buttonText: 'Thank you!' })
+        this.setState({
+          buttonText: 'Thank you! Your submission is successful',
+          error: false
+        })
       })
-      .catch(error => this.setState({ error }))
+      .catch(error => this.setState({ error: true }))
   }
 
   render () {
@@ -119,16 +104,16 @@ class RSVP extends Component {
               You can find your 4 digit code on your invitation
             </Label>
           </Form.Field>
-          <Form.Field inline>
+          <Form.Field width={8}>
             <Input
               type='text'
               label='Email'
               name='email'
-              width={8}
+              width={6}
               value={this.state.email}
               onChange={this.handleChange}
             />
-            <Label pointing='left'>
+            <Label pointing>
               A confirmation email will be sent within 24 hours. Email
               dkmc91396@outlook.com if not receive
             </Label>
@@ -181,6 +166,13 @@ class RSVP extends Component {
             content={this.state.buttonText}
             onClick={this.handleSubmit}
           />
+          {this.state.error && (
+            <div>
+              Please check your invitation for your code! If it continues to
+              fail, please email dkmc91396@outlook.com or call Alex
+              (847)912-1388
+            </div>
+          )}
         </Form>
       </div>
     )
