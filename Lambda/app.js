@@ -7,7 +7,12 @@ const card = require('./routes/card.route');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-app.use(cors());
+
+// app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true
+}));
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -18,7 +23,7 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-const port = 3000
+// const port = 3000
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
