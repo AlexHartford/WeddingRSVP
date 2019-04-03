@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "db32a7ed-e2f8-4b52-a1fe-4ff1256d1146",
+		"name": "WeddingRSVP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addCard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "zz7hS42WZ56Q7z3uJxEwj9fUX6Dm2XRvChrB8Im4",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"code\": 1238,\n\t\"names\": [\"Bill Gates\", \"Melinda Gates\"],\n\t\"rsvp\": false,\n\t\"numGuests\": 2\n}"
+				},
+				"url": {
+					"raw": "https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/create",
+					"protocol": "https",
+					"host": [
+						"ln6hjusyb4",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"cards",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCards",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "zz7hS42WZ56Q7z3uJxEwj9fUX6Dm2XRvChrB8Im4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/",
+					"protocol": "https",
+					"host": [
+						"ln6hjusyb4",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"cards",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOneCard",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "zz7hS42WZ56Q7z3uJxEwj9fUX6Dm2XRvChrB8Im4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/1234",
+					"protocol": "https",
+					"host": [
+						"ln6hjusyb4",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"cards",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCard",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "zz7hS42WZ56Q7z3uJxEwj9fUX6Dm2XRvChrB8Im4"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"code\": 1234,\n\t\"names\": [\"Alex Hartford\", \"Dora Kung\"],\n\t\"rsvp\": true,\n\t\"numGuests\": 4\n}"
+				},
+				"url": {
+					"raw": "https://ln6hjusyb4.execute-api.us-east-2.amazonaws.com/dev/cards/update/1234",
+					"protocol": "https",
+					"host": [
+						"ln6hjusyb4",
+						"execute-api",
+						"us-east-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"cards",
+						"update",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
