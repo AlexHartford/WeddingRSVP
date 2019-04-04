@@ -6,7 +6,8 @@ let CardSchema = new Schema({
     names: { type: Array, required: true },
     email: { type: String, required: true},
     rsvp: { type: Boolean, required: true },
-    numGuests: { type: Number, required: true }
+    numGuests: { type: Number, required: true },
+    attending: { type: Boolean, required: true}
 });
 
 module.exports = mongoose.model('Card', CardSchema);

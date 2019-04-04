@@ -8,6 +8,7 @@ exports.create_card = function (req, res) {
       rsvp: req.body.rsvp,
       email: req.body.email,
       numGuests: req.body.numGuests,
+      attending: req.body.attending
     }
   )
 

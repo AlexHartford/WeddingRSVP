@@ -61,7 +61,7 @@ class RSVP extends Component {
       .send({
         code: this.state.code,
         names: this.state.attending === 'Attending' ? this.state.guests : [],
-        rsvp: this.state.attending === 'Attending',
+        rsvp: true,
         email: this.state.email,
         numGuests:
           this.state.attending === 'Attending' ? this.state.guests.length : 0,
