@@ -28,7 +28,7 @@ functions:
           path: cards/create
           method: post
           cors:
-            origin: 'http://localhost:3000'
+            origin: 'https://doraandalexwedding.com'
             headers:
              - Content-Type
              - X-Amz-Date
@@ -45,7 +45,7 @@ functions:
           path: cards/{code}
           method: get
           cors:
-            origin: 'http://localhost:3000'
+            origin: 'https://doraandalexwedding.com'
             headers:
              - Content-Type
              - X-Amz-Date
@@ -62,7 +62,7 @@ functions:
           path: cards/
           method: get
           cors:
-            origin: 'http://localhost:3000'
+            origin: 'https://doraandalexwedding.com'
             headers:
              - Content-Type
              - X-Amz-Date
@@ -79,7 +79,7 @@ functions:
           path: cards/update/{code}
           method: put
           cors:
-            origin: 'http://localhost:3000'
+            origin: 'https://doraandalexwedding.com'
             headers:
              - Content-Type
              - X-Amz-Date

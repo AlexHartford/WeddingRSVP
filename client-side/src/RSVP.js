@@ -61,7 +61,7 @@ class RSVP extends Component {
       .send({
         code: this.state.code,
         names: this.state.attending === 'Attending' ? this.state.guests : [],
-        rsvp: true,
+        rsvp: this.state.attending === 'Attending',
         email: this.state.email,
         numGuests:
           this.state.attending === 'Attending' ? this.state.guests.length : 0,
@@ -69,7 +69,7 @@ class RSVP extends Component {
       })
       .withCredentials()
       .set('Content-Type', 'application/json')
-      .set('Access-Control-Allow-Origin', 'http://localhost:3000')
+      .set('Access-Control-Allow-Origin', 'https://doraandalexwedding.com')
       .set('Access-Control-Allow-Credentials', true)
       .set(
         'Access-Control-Allow-Headers',
@@ -78,7 +78,7 @@ class RSVP extends Component {
 
       .then(res => {
         this.setState({
-          buttonText: 'Thank you! Your submission is successful',
+          buttonText: this.state.attending === 'Attending' ? 'Thank you! Your submission was successful' : 'Sorry you can\'t make it. Thanks for confirming!',
           error: false
         })
       })
@@ -115,7 +115,7 @@ class RSVP extends Component {
             />
             <Label pointing>
               A confirmation email will be sent within 24 hours. Email
-              dkmc91396@outlook.com if not receive
+              dkmc91396@outlook.com if not received
             </Label>
           </Form.Field>
 
