@@ -90,7 +90,7 @@ class RSVP extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit} size='large'>
+        <Form size='large'>
           <Form.Field inline>
             <Input
               type='text'
